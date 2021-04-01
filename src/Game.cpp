@@ -46,6 +46,7 @@ void Game::Render()
 
     for (int i = 0; i < shapes.size(); i++) 
     {
+        Separation(flock, flock[i]);
         Align(flock, flock[i]);
         Cohesion(flock, flock[i]);
 
@@ -108,7 +109,36 @@ void Game::Cohesion(std::vector<Boid> boids, Boid& b)
         steering.divScalar((float)total);
         steering.subVector(b.position);
         steering.subVector(b.velocity);
-        steering.limit(0.1);
+        steering.limit(0.3);
+    }
+
+    b.acceleration.addVector(steering);
+}
+
+void Game::Separation(std::vector<Boid> boids, Boid& b)
+{
+    Vector steering;
+    int total = 0;
+
+    for (auto s : boids)
+    {
+        float d = b.position.distance(s.position);
+        if (&s != &b && d < 30)
+        {
+            Vector diff;
+            diff = diff.subTwoVector(b.position, s.position);
+            diff.divScalar(d);
+            steering.addVector(diff);
+            total++;
+        }
+    }
+    if (total > 0)
+    {
+        steering.divScalar((float)total);
+//        steering.subVector(b.velocity);
+//        steering.limit(0.1);
+
+        steering.mulScalar(3);
     }
 
     b.acceleration.addVector(steering);

@@ -20,6 +20,7 @@ private:
 
     void Align(std::vector<Boid> boids, Boid& b);
     void Cohesion(std::vector<Boid> boids, Boid& b);
+    void Separation(std::vector<Boid> boids, Boid& b);
 
 public:
     Game();

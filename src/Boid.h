@@ -55,6 +55,8 @@ public:
 	}
 	void divScalar(float s)
 	{
+		if (s == 0) return;
+
 		x /= s;
 		y /= s;
 	}
@@ -63,12 +65,23 @@ public:
 		float dx = x - v.x;
 		float dy = y - v.y;
 		float dist = sqrt(dx * dx + dy * dy);
+
+		if (dist < 0) dist = -dist;
+
 		return dist;
 	}
 	void subVector(Vector v)
 	{
 		x -= v.x;
 		y -= v.y;
+	}
+	Vector subTwoVector(Vector v, Vector v2)
+	{
+		Vector tmp;
+		v.x -= v2.x;
+		v.y -= v2.y;
+		tmp.set(v.x, v.y);
+		return tmp;
 	}
 };
 
