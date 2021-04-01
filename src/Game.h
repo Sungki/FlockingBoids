@@ -19,6 +19,7 @@ private:
     void Edges(Boid& b);
 
     void Align(std::vector<Boid> boids, Boid& b);
+    void Cohesion(std::vector<Boid> boids, Boid& b);
 
 public:
     Game();
