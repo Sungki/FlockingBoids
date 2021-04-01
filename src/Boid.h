@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include <vector>
 
 class Vector
 {
@@ -51,6 +53,23 @@ public:
 			set(x / size, y / size);
 		}
 	}
+	void divScalar(float s)
+	{
+		x /= s;
+		y /= s;
+	}
+	float distance(Vector v)
+	{
+		float dx = x - v.x;
+		float dy = y - v.y;
+		float dist = sqrt(dx * dx + dy * dy);
+		return dist;
+	}
+	void subVector(Vector v)
+	{
+		x -= v.x;
+		y -= v.y;
+	}
 };
 
 class Boid
@@ -61,7 +80,8 @@ public:
 	Vector acceleration;
 
 	void Update();
-	void Align();
+	Vector Align(std::vector<Boid> boids);
+	void Flock(std::vector<Boid> boids);
 
 	Boid(float x, float y);
 };

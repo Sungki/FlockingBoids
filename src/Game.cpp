@@ -12,7 +12,7 @@ Game::Game()
 void Game::Run()
 {
     for (int i = 0; i < 250; i++) {
-        Boid b(window_width / 2, window_height / 2);
+        Boid b(rand()% window_width, rand() % window_height);
         sf::CircleShape shape(8, 3);
 
         shape.setPosition(window_width/2, window_height/2);
@@ -44,8 +44,11 @@ void Game::Render()
 {
     window.clear();
 
+
+
     for (int i = 0; i < shapes.size(); i++) 
     {
+        flock[i].Flock(flock);
         flock[i].Update();
 
         shapes[i].setPosition(flock[i].position.x, flock[i].position.y);

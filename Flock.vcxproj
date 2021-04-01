@@ -142,13 +142,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Boid.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="src\Boid.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Boid.h" />
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="src\Boid.h" />
+    <ClInclude Include="src\Game.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
