@@ -82,6 +82,7 @@ public:
 	void Update();
 	Vector Align(std::vector<Boid> boids);
 	void Flock(std::vector<Boid> boids);
+	void Edges(int w, int h);
 
 	Boid(float x, float y);
 };

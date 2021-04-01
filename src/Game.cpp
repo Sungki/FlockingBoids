@@ -48,6 +48,7 @@ void Game::Render()
 
     for (int i = 0; i < shapes.size(); i++) 
     {
+        flock[i].Edges(window_width, window_height);
         flock[i].Flock(flock);
         flock[i].Update();
 

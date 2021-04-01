@@ -46,3 +46,11 @@ void Boid::Flock(std::vector<Boid> boids)
     Vector alignment = Align(boids);
     acceleration = alignment;
 }
+
+void Boid::Edges(int w, int h)
+{
+    if (position.x > w) position.x = 0;
+    else if (position.x < 0) position.x = w;
+    if (position.y > h) position.y = 0;
+    else if (position.y < 0) position.y = h;
+}
