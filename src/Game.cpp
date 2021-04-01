@@ -4,9 +4,9 @@
 
 Game::Game()
 {
-    this->window_height = 768;
-    this->window_width = 1024;
-    this->window.create(sf::VideoMode(window_width, window_height, 32), "FlockingSimulation");
+    window_height = 768;
+    window_width = 1024;
+    window.create(sf::VideoMode(window_width, window_height, 32), "FlockingSimulation");
 }
 
 void Game::Run()
@@ -44,19 +44,47 @@ void Game::Render()
 {
     window.clear();
 
-
-
     for (int i = 0; i < shapes.size(); i++) 
     {
-        flock[i].Edges(window_width, window_height);
-        flock[i].Flock(flock);
+        Align(flock, flock[i]);
+
         flock[i].Update();
 
+        Edges(flock[i]);
         shapes[i].setPosition(flock[i].position.x, flock[i].position.y);
-
         window.draw(shapes[i]);
     }
 
-
     window.display();
+}
+
+void Game::Edges(Boid& b)
+{
+    if (b.position.x > window_width) b.position.x = 0;
+    else if (b.position.x < 0) b.position.x = window_width;
+    if (b.position.y > window_height) b.position.y = 0;
+    else if (b.position.y < 0) b.position.y = window_height;
+}
+
+void Game::Align(std::vector<Boid> boids, Boid& b)
+{
+    Vector steering;
+    int total = 0;
+
+    for (auto s : boids)
+    {
+        if (&s != &b && b.position.distance(s.position) < 50)
+        {
+            steering.addVector(s.velocity);
+            total++;
+        }
+    }
+    if (total > 0)
+    {
+        steering.divScalar((float)total);
+        steering.subVector(b.velocity);
+        steering.limit(0.3);
+    }
+
+    b.acceleration =  steering;
 }

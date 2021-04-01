@@ -16,6 +16,9 @@ private:
 
     void Render();
     void HandleInput();
+    void Edges(Boid& b);
+
+    void Align(std::vector<Boid> boids, Boid& b);
 
 public:
     Game();
