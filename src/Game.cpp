@@ -109,7 +109,7 @@ void Game::Cohesion(std::vector<Boid> boids, Boid& b)
         steering.divScalar((float)total);
         steering.subVector(b.position);
         steering.subVector(b.velocity);
-        steering.limit(0.3);
+        steering.limit(0.1);
     }
 
     b.acceleration.addVector(steering);

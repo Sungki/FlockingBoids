@@ -11,7 +11,7 @@ Boid::Boid(float x, float y)
 void Boid::Update()
 {
     velocity.addVector(acceleration);
-    velocity.limit(5);
+    velocity.limit(6);
     position.addVector(velocity);
     acceleration.mulScalar(0);
 }
