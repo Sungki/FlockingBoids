@@ -75,7 +75,7 @@ void Game::Align(std::vector<Boid> boids, Boid& b)
 
     for (auto s : boids)
     {
-        if (&s != &b && b.position.distance(s.position) < 30)
+        if (&s != &b && b.position.distance(s.position) < 50)
         {
             steering.addVector(s.velocity);
             total++;
@@ -135,10 +135,9 @@ void Game::Separation(std::vector<Boid> boids, Boid& b)
     if (total > 0)
     {
         steering.divScalar((float)total);
+        steering.mulScalar(2);
 //        steering.subVector(b.velocity);
-//        steering.limit(0.1);
-
-        steering.mulScalar(3);
+//        steering.limit(0.2);
     }
 
     b.acceleration.addVector(steering);

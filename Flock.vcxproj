@@ -142,11 +142,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Flock.cpp" />
     <ClCompile Include="src\Boid.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Flock.h" />
     <ClInclude Include="src\Boid.h" />
     <ClInclude Include="src\Game.h" />
   </ItemGroup>

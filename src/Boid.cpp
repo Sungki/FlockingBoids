@@ -3,7 +3,7 @@
 
 Boid::Boid(float x, float y)
 {
-    acceleration = Vector(0, 0);
+    acceleration = Vector(1, 1);
     velocity = Vector(rand() % 3 - 2, rand() % 3 - 2);
     position = Vector(x,y);
 }
