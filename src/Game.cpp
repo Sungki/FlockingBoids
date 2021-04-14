@@ -75,7 +75,7 @@ void Game::Align(std::vector<Boid> boids, Boid& b)
 
     for (auto s : boids)
     {
-        if (&s != &b && b.position.distance(s.position) < 50)
+        if (&s != &b && b.position.distance(s.position) < 30)
         {
             steering.addVector(s.velocity);
             total++;
@@ -98,7 +98,7 @@ void Game::Cohesion(std::vector<Boid> boids, Boid& b)
 
     for (auto s : boids)
     {
-        if (&s != &b && b.position.distance(s.position) < 100)
+        if (&s != &b && b.position.distance(s.position) < 50)
         {
             steering.addVector(s.position);
             total++;
@@ -109,7 +109,7 @@ void Game::Cohesion(std::vector<Boid> boids, Boid& b)
         steering.divScalar((float)total);
         steering.subVector(b.position);
         steering.subVector(b.velocity);
-        steering.limit(0.1);
+        steering.limit(0.05);
     }
 
     b.acceleration.addVector(steering);
